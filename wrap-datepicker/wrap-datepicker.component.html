@@ -1,0 +1,42 @@
+@if (formControlName()) {
+  <ng-container [formGroup]="formGroup()">
+    <p-datepicker
+      appendTo="body"
+      [showIcon]="showIcon()"
+      [showTime]="showTime()"
+      [showClear]="showClear()"
+      [timeOnly]="timeOnly()"
+      [dateFormat]="dateFormat()"
+      [readonly]="readonly()"
+      [readonlyInput]="readonlyInput()"
+      [minDate]="minDate()"
+      [maxDate]="maxDate()"
+      [view]="view()"
+      [formControlName]="formControlName()"
+      (onSelect)="onSelect.emit($event)"
+      (onClear)="onClear.emit()"
+      [inputStyle]="{ width: '100%' }"
+      [style]="{ width: '100%' }"
+    ></p-datepicker>
+  </ng-container>
+} @else {
+  <p-datepicker
+    appendTo="body"
+    [(ngModel)]="ngModel"
+    [showIcon]="showIcon()"
+    [showTime]="showTime()"
+    [showClear]="showClear()"
+    [timeOnly]="timeOnly()"
+    [dateFormat]="dateFormat()"
+    [readonly]="readonly()"
+    [readonlyInput]="readonlyInput()"
+    [minDate]="minDate()"
+    [maxDate]="maxDate()"
+    [view]="view()"
+    [disabled]="disabled()"
+    (onSelect)="onSelect.emit($event)"
+    (onClear)="onClear.emit()"
+    [inputStyle]="{ width: '100%' }"
+    [style]="{ width: '100%' }"
+  />
+}

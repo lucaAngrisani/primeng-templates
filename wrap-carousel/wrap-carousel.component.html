@@ -1,0 +1,33 @@
+<p-carousel [value]="value()">
+  @if (headerTemplate) {
+    <ng-template #header>
+      <ng-container *ngTemplateOutlet="headerTemplate"></ng-container>
+    </ng-template>
+  }
+
+  @if (footerTemplate) {
+    <ng-template #footer>
+      <ng-container *ngTemplateOutlet="footerTemplate"></ng-container>
+    </ng-template>
+  }
+
+  @if (itemTemplate) {
+    <ng-template #item let-itemValue>
+      <ng-container
+        *ngTemplateOutlet="itemTemplate; context: { itemValue: itemValue }"
+      ></ng-container>
+    </ng-template>
+  }
+
+  @if (previousIconTemplate) {
+    <ng-template #previousIcon>
+      <ng-container *ngTemplateOutlet="previousIconTemplate"></ng-container>
+    </ng-template>
+  }
+
+  @if (nextIconTemplate) {
+    <ng-template #nextIcon>
+      <ng-container *ngTemplateOutlet="nextIconTemplate"></ng-container>
+    </ng-template>
+  }
+</p-carousel>

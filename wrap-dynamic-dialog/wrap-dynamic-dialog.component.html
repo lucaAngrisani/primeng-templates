@@ -1,0 +1,9 @@
+<p-dialog
+  [(visible)]="wrapDialogService.visible"
+  [closable]="wrapDialogService.closable()"
+  [header]="wrapDialogService.header()"
+  [modal]="true"
+  [draggable]="false"
+>
+  <ng-container #dynamicContainer></ng-container>
+</p-dialog>

@@ -1,0 +1,11 @@
+@let action = message()?.action;
+@let detail = message()?.detail;
+@let severity = message()?.severity;
+@if (detail) {
+  <p-message
+    (click)="action ? action() : null"
+    [class]="action ? 'cursor-pointer' : ''"
+    [text]="detail"
+    [severity]="severity"
+  ></p-message>
+}

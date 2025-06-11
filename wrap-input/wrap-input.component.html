@@ -1,0 +1,37 @@
+<div class="flex flex-col justify-start gap-2">
+  @if (icon() || label()) {
+    <div class="flex items-center gap-2 pt-1">
+      @if (icon()) {
+        <i [class]="icon()" [style.font-size]="'1rem'"></i>
+      }
+      <span>
+        @if (
+          showRequired() && form()?.get?.(controlName())?.hasValidator(required)
+        ) {
+          {{ label() }}*
+        } @else {
+          {{ label() }}
+        }
+      </span>
+    </div>
+  }
+
+  <div class="flex flex-col gap-1 w-full">
+    <ng-content></ng-content>
+
+    @if (
+      form()?.get?.(controlName())?.errors &&
+      form()?.get?.(controlName())?.touched &&
+      !hideErrors()
+    ) {
+      <div
+        class="flex items-center justify-end gap-2 invalid text-yellow-600 pr-2"
+      >
+        <i class="bx bx-error-circle" [style.font-size]="'1rem'"></i>
+        <small
+          [innerHTML]="form()!.get(controlName())!.errors! | error"
+        ></small>
+      </div>
+    }
+  </div>
+</div>

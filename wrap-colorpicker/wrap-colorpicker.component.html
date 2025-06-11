@@ -1,0 +1,21 @@
+@if (formControlName()) {
+  <ng-container [formGroup]="formGroup()">
+    <p-colorpicker
+      appendTo="body"
+      [readonly]="readonly()"
+      [formControlName]="formControlName()"
+      pTextarea
+      [inputStyle]="{ width: '100%' }"
+      [style]="{ width: '100%' }"
+    ></p-colorpicker>
+  </ng-container>
+} @else {
+  <p-colorpicker
+    appendTo="body"
+    [(ngModel)]="ngModel"
+    [readonly]="readonly()"
+    [disabled]="disabled()"
+    [inputStyle]="{ width: '100%' }"
+    [style]="{ width: '100%' }"
+  />
+}

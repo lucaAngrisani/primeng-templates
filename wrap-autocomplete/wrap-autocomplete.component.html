@@ -1,0 +1,110 @@
+@if (formControlName()) {
+  <ng-container [formGroup]="formGroup()">
+    <p-autocomplete
+      appendTo="body"
+      styleClass="w-full"
+      [size]="size()"
+      [placeholder]="placeholder()"
+      [readonly]="readonly()"
+      [suggestions]="options()"
+      [optionLabel]="optionLabel()!"
+      [optionValue]="optionValue()!"
+      [optionDisabled]="optionDisabled()!"
+      [formControlName]="formControlName()"
+      [multiple]="multiple()"
+      [fluid]="fluid()"
+      [forceSelection]="forceSelection()"
+      [typeahead]="typeahead()"
+      [completeOnFocus]="completeOnFocus()"
+      (completeMethod)="completeMethod.emit($event)"
+      (onSelect)="onSelect.emit($event)"
+      (onUnselect)="onUnselect.emit($event)"
+      (onBlur)="onBlur.emit($event)"
+    >
+      @if (headerTemplate) {
+        <ng-template #header>
+          <ng-container *ngTemplateOutlet="headerTemplate"></ng-container>
+        </ng-template>
+      }
+
+      @if (footerTemplate) {
+        <ng-template #footer>
+          <ng-container *ngTemplateOutlet="footerTemplate"></ng-container>
+        </ng-template>
+      }
+
+      @if (itemTemplate) {
+        <ng-template #item let-itemValue>
+          <ng-container
+            *ngTemplateOutlet="itemTemplate; context: { itemValue: itemValue }"
+          ></ng-container>
+        </ng-template>
+      }
+
+      @if (selectedItemTemplate) {
+        <ng-template #selecteditem let-itemValue>
+          <ng-container
+            *ngTemplateOutlet="
+              selectedItemTemplate;
+              context: { itemValue: itemValue }
+            "
+          ></ng-container>
+        </ng-template>
+      }
+    </p-autocomplete>
+  </ng-container>
+} @else {
+  <p-autocomplete
+    appendTo="body"
+    styleClass="w-full"
+    [size]="size()"
+    [placeholder]="placeholder()"
+    [readonly]="readonly()"
+    [suggestions]="options()"
+    [optionLabel]="optionLabel()!"
+    [optionValue]="optionValue()!"
+    [optionDisabled]="optionDisabled()!"
+    [disabled]="disabled()"
+    [multiple]="multiple()"
+    [fluid]="fluid()"
+    [forceSelection]="forceSelection()"
+    [typeahead]="typeahead()"
+    [completeOnFocus]="completeOnFocus()"
+    (completeMethod)="completeMethod.emit($event)"
+    (onSelect)="onSelect.emit($event)"
+    (onUnselect)="onUnselect.emit($event)"
+    (onBlur)="onBlur.emit($event)"
+    [(ngModel)]="ngModel"
+  >
+    @if (headerTemplate) {
+      <ng-template #header>
+        <ng-container *ngTemplateOutlet="headerTemplate"></ng-container>
+      </ng-template>
+    }
+
+    @if (footerTemplate) {
+      <ng-template #footer>
+        <ng-container *ngTemplateOutlet="footerTemplate"></ng-container>
+      </ng-template>
+    }
+
+    @if (itemTemplate) {
+      <ng-template #item let-itemValue>
+        <ng-container
+          *ngTemplateOutlet="itemTemplate; context: { itemValue: itemValue }"
+        ></ng-container>
+      </ng-template>
+    }
+
+    @if (selectedItemTemplate) {
+      <ng-template #selecteditem let-itemValue>
+        <ng-container
+          *ngTemplateOutlet="
+            selectedItemTemplate;
+            context: { itemValue: itemValue }
+          "
+        ></ng-container>
+      </ng-template>
+    }
+  </p-autocomplete>
+}

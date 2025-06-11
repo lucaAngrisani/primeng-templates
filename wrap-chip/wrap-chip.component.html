@@ -1,0 +1,10 @@
+<p-chip
+  class="w-full"
+  [styleClass]="styleClass()"
+  [label]="label()"
+  [removable]="removable()"
+  [removeIcon]="removeIcon()"
+  (onRemove)="onRemove.emit($event)"
+  >
+  <ng-content></ng-content>
+</p-chip>

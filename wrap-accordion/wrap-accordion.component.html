@@ -1,0 +1,30 @@
+<p-accordion [(value)]="tabindex" [multiple]="multiple()">
+  @for (panelTemplate of panelTemplates; track $index; let idx1 = $index) {
+    @defer {
+      <p-accordion-panel [value]="$index">
+        <p-accordion-header>
+          @defer {
+            @for (
+              panelHeaderTemplate of panelHeaderTemplates;
+              track $index;
+              let idx2 = $index
+            ) {
+              @defer {
+                @if (idx1 == idx2) {
+                  <ng-container
+                    *ngTemplateOutlet="panelHeaderTemplate"
+                  ></ng-container>
+                }
+              }
+            }
+          }
+        </p-accordion-header>
+        <p-accordion-content>
+          <ng-container *ngTemplateOutlet="panelTemplate"></ng-container>
+        </p-accordion-content>
+      </p-accordion-panel>
+    } @placeholder {
+      <wrap-spinner />
+    }
+  }
+</p-accordion>

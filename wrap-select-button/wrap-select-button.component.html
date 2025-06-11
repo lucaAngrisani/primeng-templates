@@ -1,0 +1,22 @@
+@if(formControlName()) {
+<ng-container [formGroup]="formGroup()">
+  <p-selectbutton
+    [options]="options()"
+    [optionLabel]="optionLabel()!"
+    [optionValue]="optionValue()!"
+    [optionDisabled]="optionDisabled()!"
+    [unselectable]="unselectable()"
+    [formControlName]="formControlName()"
+  />
+</ng-container>
+} @else {
+<p-selectbutton
+  [options]="options()"
+  [optionLabel]="optionLabel()!"
+  [optionValue]="optionValue()!"
+  [optionDisabled]="optionDisabled()!"
+  [unselectable]="unselectable()"
+  [disabled]="disabled()"
+  [(ngModel)]="ngModel"
+/>
+}

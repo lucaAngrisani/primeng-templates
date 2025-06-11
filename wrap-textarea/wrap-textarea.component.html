@@ -1,0 +1,28 @@
+<div class="w-full">
+  @if (formControlName()) {
+    <ng-container [formGroup]="formGroup()">
+      <textarea
+        class="w-full"
+        [rows]="rows()"
+        [cols]="cols()"
+        [pSize]="size()"
+        [placeholder]="placeholder()"
+        [readonly]="readonly()"
+        [formControlName]="formControlName()"
+        pTextarea
+      ></textarea>
+    </ng-container>
+  } @else {
+    <textarea
+      class="w-full"
+      [rows]="rows()"
+      [cols]="cols()"
+      [pSize]="size()"
+      [placeholder]="placeholder()"
+      [readonly]="readonly()"
+      [disabled]="disabled()"
+      [(ngModel)]="ngModel"
+      pTextarea
+    ></textarea>
+  }
+</div>

@@ -1,0 +1,10 @@
+@if (image()) {
+  <p-avatar [image]="image()" [size]="size()" [shape]="shape()"></p-avatar>
+} @else {
+  <p-avatar
+    [label]="label()"
+    [icon]="icon()"
+    [size]="size()"
+    [shape]="shape()"
+  ></p-avatar>
+}

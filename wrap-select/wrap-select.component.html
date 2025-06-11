@@ -1,0 +1,72 @@
+@if (formControlName()) {
+  <ng-container [formGroup]="formGroup()">
+    <p-select
+      appendTo="body"
+      styleClass="w-full"
+      [size]="size()"
+      [filter]="filter()"
+      [filterBy]="filterBy()"
+      [editable]="editable()"
+      [placeholder]="placeholder()"
+      [readonly]="readonly()"
+      [showClear]="showClear()"
+      [virtualScroll]="virtualScroll()"
+      [virtualScrollItemSize]="virtualScrollItemSize()"
+      [options]="options()"
+      [optionLabel]="optionLabel()"
+      [optionValue]="optionValue()"
+      [optionDisabled]="optionDisabled()"
+      [formControlName]="formControlName()"
+      (onChange)="onChange.emit($event)"
+    >
+      @if (selectedItemTemplate) {
+        <ng-template #selectedItem let-selectedOption>
+          <ng-container *ngTemplateOutlet="selectedItemTemplate"></ng-container>
+        </ng-template>
+      }
+
+      @if (itemTemplate) {
+        <ng-template #item let-itemValue>
+          <ng-container
+            *ngTemplateOutlet="itemTemplate; context: { itemValue: itemValue }"
+          ></ng-container>
+        </ng-template>
+      }
+    </p-select>
+  </ng-container>
+} @else {
+  <p-select
+    appendTo="body"
+    styleClass="w-full"
+    [size]="size()"
+    [filter]="filter()"
+    [filterBy]="filterBy()"
+    [editable]="editable()"
+    [placeholder]="placeholder()"
+    [readonly]="readonly()"
+    [showClear]="showClear()"
+    [virtualScroll]="virtualScroll()"
+    [virtualScrollItemSize]="virtualScrollItemSize()"
+    [options]="options()"
+    [optionLabel]="optionLabel()"
+    [optionValue]="optionValue()"
+    [optionDisabled]="optionDisabled()"
+    [disabled]="disabled()"
+    (onChange)="onChange.emit($event)"
+    [(ngModel)]="ngModel"
+  >
+    @if (selectedItemTemplate) {
+      <ng-template #selectedItem let-selectedOption>
+        <ng-container *ngTemplateOutlet="selectedItemTemplate"></ng-container>
+      </ng-template>
+    }
+
+    @if (itemTemplate) {
+      <ng-template #item let-itemValue>
+        <ng-container
+          *ngTemplateOutlet="itemTemplate; context: { itemValue: itemValue }"
+        ></ng-container>
+      </ng-template>
+    }
+  </p-select>
+}

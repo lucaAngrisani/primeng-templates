@@ -1,0 +1,8 @@
+<p-drawer [(visible)]="visible" [header]="header()" [styleClass]="styleClass()">
+  @if (headerTemplate) {
+    <ng-template #header>
+      <ng-container *ngTemplateOutlet="headerTemplate"></ng-container>
+    </ng-template>
+  }
+    <ng-content></ng-content>
+</p-drawer>

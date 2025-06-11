@@ -1,0 +1,9 @@
+<span
+  (click)="tooltip.active ? tooltip.deactivate() : tooltip.activate()"
+  [life]="life()"
+  [tooltipEvent]="tooltipEvent"
+  [pTooltip]="value()"
+  [tooltipPosition]="tooltipPosition()"
+>
+  <ng-content />
+</span>

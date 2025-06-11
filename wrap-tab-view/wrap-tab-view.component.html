@@ -1,0 +1,24 @@
+<p-tabs [value]="tabindex()" [scrollable]="scrollable()">
+  @defer {
+    <p-tablist>
+      @defer {
+        @for (headerTemplate of panelHeaderTemplates; track $index) {
+          <p-tab [value]="$index">
+            <ng-container *ngTemplateOutlet="headerTemplate"></ng-container
+          ></p-tab>
+        }
+      }
+    </p-tablist>
+    <p-tabpanels>
+      @defer {
+        @for (panelTemplate of panelTemplates; track $index) {
+          <p-tabpanel [value]="$index">
+            <ng-container *ngTemplateOutlet="panelTemplate"></ng-container>
+          </p-tabpanel>
+        }
+      }
+    </p-tabpanels>
+  } @placeholder {
+    <wrap-spinner />
+  }
+</p-tabs>

@@ -1,0 +1,19 @@
+@if (formControlName()) {
+  <ng-container [formGroup]="formGroup()">
+    <p-editor
+      [formControlName]="formControlName()"
+      [readonly]="readonly()"
+      [disabled]="disabled()"
+      [style]="inputStyle()"
+    >
+    </p-editor>
+  </ng-container>
+} @else {
+  <p-editor
+    [(ngModel)]="ngModel"
+    [readonly]="readonly()"
+    [disabled]="disabled()"
+    [style]="inputStyle()"
+  >
+  </p-editor>
+}

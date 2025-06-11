@@ -1,0 +1,20 @@
+@if (formControlName()) {
+  <ng-container [formGroup]="formGroup()">
+    <p-toggleswitch
+      [trueValue]="trueValue()"
+      [falseValue]="falseValue()"
+      [readonly]="readonly()"
+      [formControlName]="formControlName()"
+      (onChange)="onChange.emit($event)"
+    />
+  </ng-container>
+} @else {
+  <p-toggleswitch
+    [trueValue]="trueValue()"
+    [falseValue]="falseValue()"
+    [disabled]="disabled()"
+    [readonly]="readonly()"
+    (onChange)="onChange.emit($event)"
+    [(ngModel)]="ngModel"
+  />
+}

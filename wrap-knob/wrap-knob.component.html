@@ -1,0 +1,41 @@
+@if (valueColor() || rangeColor()) {
+  <p-knob
+    [class]="className()"
+    [ngModel]="ngModel()"
+    [valueTemplate]="valueTemplate()"
+    [styleClass]="styleClass()"
+    [tabindex]="tabindex()"
+    [disabled]="disabled()"
+    [valueColor]="valueColor()"
+    [rangeColor]="rangeColor()"
+    [name]="name()"
+    [size]="size()"
+    [step]="step()"
+    [min]="min()"
+    [max]="max()"
+    [strokeWidth]="strokeWidth()"
+    [showValue]="showValue()"
+    [readonly]="readonly()"
+  >
+    <ng-content></ng-content>
+  </p-knob>
+} @else {
+  <p-knob
+    [class]="className()"
+    [ngModel]="ngModel()"
+    [valueTemplate]="valueTemplate()"
+    [styleClass]="styleClass()"
+    [tabindex]="tabindex()"
+    [disabled]="disabled()"
+    [name]="name()"
+    [size]="size()"
+    [step]="step()"
+    [min]="min()"
+    [max]="max()"
+    [strokeWidth]="strokeWidth()"
+    [showValue]="showValue()"
+    [readonly]="readonly()"
+  >
+    <ng-content></ng-content>
+  </p-knob>
+}

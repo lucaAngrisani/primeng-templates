@@ -1,0 +1,37 @@
+@if(formControlName()) {
+<ng-container [formGroup]="formGroup()">
+  <p-multiselect
+    [maxSelectedLabels]="maxSelectedLabels()"
+    appendTo="body"
+    [size]="size()"
+    [filter]="filter()"
+    [filterBy]="filterBy()"
+    [filterMatchMode]="filterMatchMode()"
+    [filterFields]="filterFields()"
+    [placeholder]="placeholder()"
+    [readonly]="readonly()"
+    [options]="options()"
+    [optionLabel]="optionLabel()"
+    [optionValue]="optionValue()"
+    [optionDisabled]="optionDisabled()"
+    [formControlName]="formControlName()"
+  />
+</ng-container>
+} @else {
+<p-multiselect
+  appendTo="body"
+  [size]="size()"
+  [filter]="filter()"
+  [filterBy]="filterBy()"
+  [filterMatchMode]="filterMatchMode()"
+  [filterFields]="filterFields()"
+  [placeholder]="placeholder()"
+  [readonly]="readonly()"
+  [options]="options()"
+  [optionLabel]="optionLabel()"
+  [optionValue]="optionValue()"
+  [optionDisabled]="optionDisabled()"
+  [disabled]="disabled()"
+  [(ngModel)]="ngModel"
+/>
+}

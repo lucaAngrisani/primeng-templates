@@ -1,0 +1,15 @@
+@if(formControlName()) {
+<ng-container [formGroup]="formGroup()">
+  <p-rating
+    [readonly]="readonly()"
+    [formControlName]="formControlName()"
+    pTextarea
+  ></p-rating>
+</ng-container>
+} @else {
+<p-rating
+  [(ngModel)]="ngModel"
+  [readonly]="readonly()"
+  [disabled]="disabled()"
+/>
+}

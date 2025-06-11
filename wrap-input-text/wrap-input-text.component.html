@@ -1,0 +1,29 @@
+@if (formControlName()) {
+  <ng-container [formGroup]="formGroup()">
+    <input
+      pInputText
+      [type]="type()"
+      [class]="className() ? className() : 'w-full'"
+      [pSize]="size()"
+      [placeholder]="placeholder()"
+      [readonly]="readonly()"
+      [maxlength]="maxlength()"
+      [formControlName]="formControlName()"
+      (blur)="onBlur.emit()"
+      [autocomplete]="autocomplete()"
+    />
+  </ng-container>
+} @else {
+  <input
+    pInputText
+    [type]="type()"
+    [class]="className() ? className() : 'w-full'"
+    [pSize]="size()"
+    [disabled]="disabled()"
+    [placeholder]="placeholder()"
+    [maxlength]="maxlength()"
+    [(ngModel)]="ngModel"
+    (blur)="onBlur.emit()"
+    [autocomplete]="autocomplete()"
+  />
+}

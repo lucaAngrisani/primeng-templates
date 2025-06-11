@@ -1,0 +1,20 @@
+@if(formControlName()) {
+<ng-container [formGroup]="formGroup()">
+  <p-inputmask
+    [size]="size()"
+    [mask]="mask()"
+    [readonly]="readonly()"
+    [formControlName]="formControlName()"
+    [placeholder]="placeholder()"
+  />
+</ng-container>
+} @else {
+<p-inputmask
+  [size]="size()"
+  [disabled]="disabled()"
+  [mask]="mask()"
+  [readonly]="readonly()"
+  [(ngModel)]="ngModel"
+  [placeholder]="placeholder()"
+/>
+}
