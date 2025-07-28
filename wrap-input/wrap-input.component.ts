@@ -1,11 +1,10 @@
 import { Validators, FormGroup } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { Component, input } from '@angular/core';
-import { ErrorPipe } from 'pipes';
 
 @Component({
   templateUrl: './wrap-input.component.html',
-  imports: [ErrorPipe, TranslateModule],
+  imports: [TranslateModule],
   selector: 'wrap-input',
 })
 export class WrapInputComponent {

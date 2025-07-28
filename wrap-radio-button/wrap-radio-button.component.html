@@ -1,19 +1,19 @@
 @if (formControlName()) {
-  <ng-container [formGroup]="formGroup()">
-    <p-radioButton
-      [name]="name()"
-      [value]="value()"
-      [formControlName]="formControlName()"
-      [inputId]="inputId()"
-      [readonly]="readonly()"
-    />
-  </ng-container>
-} @else {
+<ng-container [formGroup]="formGroup()">
   <p-radioButton
-    [disabled]="disabled()"
-    [(ngModel)]="ngModel"
     [name]="name()"
+    [value]="value()"
+    [formControlName]="formControlName()"
     [inputId]="inputId()"
-    [readonly]="readonly()"
   />
+</ng-container>
+} @else {
+<p-radioButton
+  [disabled]="disabled()"
+  [ngModel]="ngModel()"
+  (ngModelChange)="onInputChange($event)"
+  [name]="name()"
+  [value]="value()"
+  [inputId]="inputId()"
+/>
 }

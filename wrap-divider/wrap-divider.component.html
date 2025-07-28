@@ -1,3 +1,8 @@
-<p-divider>
+<p-divider
+  [styleClass]="styleClass()"
+  [layout]="layout()"
+  [type]="type()"
+  [align]="align()"
+>
   <ng-content></ng-content>
 </p-divider>

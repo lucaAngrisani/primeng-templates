@@ -7,6 +7,7 @@ import { Card } from 'primeng/card';
   imports: [Card],
 })
 export class WrapCardComponent {
-  styleClass = input<string | null>(null);
-  className = input<string | null>(null);
+  styleClass = input<string | undefined>(undefined);
+  className = input<string | undefined>(undefined);
+  header = input<string | undefined>(undefined);
 }

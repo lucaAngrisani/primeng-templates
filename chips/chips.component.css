@@ -1,0 +1,13 @@
+.app-chips-comp .resetChips {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 16px;
+    margin-left: 18px;
+    text-decoration: underline;
+    align-self: center;
+}
+
+.app-chips-comp .iconChip{
+    margin-left: 0.75rem;
+    margin-top: 0.12rem;
+}

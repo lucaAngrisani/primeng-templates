@@ -1,22 +1,19 @@
-<div class="flex items-center gap-2">
-  @if (formControl()) {
-    <ng-container [formGroup]="formGroup()">
-      <p-checkbox
-        [name]="name()"
-        [value]="value()"
-        [formControl]="formControl()"
-        [disabled]="disabled()"
-        [inputId]="inputId()"
-      ></p-checkbox>
-    </ng-container>
-  } @else {
-    <p-checkbox
-      [name]="name()"
-      [value]="value()"
-      [(ngModel)]="ngModel"
-      [disabled]="disabled()"
-      [inputId]="inputId()"
-    ></p-checkbox>
-  }
-  <label> {{ label() }} </label>
-</div>
+@if (formControl()) {
+<ng-container [formGroup]="formGroup()">
+  <p-checkbox
+    [name]="name()"
+    [value]="value()"
+    [formControl]="formControl()!"
+    [inputId]="inputId()"
+  ></p-checkbox>
+</ng-container>
+} @else {
+<p-checkbox
+  [disabled]="disabled()"
+  [ngModel]="ngModel()"
+  (ngModelChange)="onInputChange($event)"
+  [name]="name()"
+  [value]="value()"
+  [inputId]="inputId()"
+></p-checkbox>
+}

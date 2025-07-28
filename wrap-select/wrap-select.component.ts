@@ -15,7 +15,7 @@ import {
 } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgTemplateOutlet } from '@angular/common';
-import { Select } from 'primeng/select';
+import { Select, SelectChangeEvent } from 'primeng/select';
 
 @Component({
   providers: [
@@ -45,7 +45,7 @@ export class WrapSelectComponent<T> {
   optionValue = input<undefined | string>(undefined);
   formGroup = input<FormGroup>(new FormGroup({}));
   filterBy = input<undefined | string>(undefined);
-  size = input<'small' | 'large' | null>(null);
+  size = input<'small' | 'large'>('small');
   virtualScrollItemSize = input<number>(37);
   virtualScroll = input<boolean>(true);
   formControlName = input<string>('');
@@ -58,7 +58,7 @@ export class WrapSelectComponent<T> {
 
   options = input<any[]>([]);
 
-  onChange = output<Event>();
+  onChange = output<SelectChangeEvent>();
 
   value = model<string>('');
   ngModel = model<T>();

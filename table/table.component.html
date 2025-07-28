@@ -1,0 +1,160 @@
+@if (tableService.tables[key]) {
+<p-table
+  [id]="key"
+  responsiveLayout="scroll"
+  [lazy]="lazy"
+  [lazyLoadOnInit]="lazyLoadOnInit"
+  [value]="(tableService.tables[key].value | async) ?? []"
+  (onLazyLoad)="!tableService.tables[key].loading && onLoad.emit($event)"
+  [sortField]="tableService.tables[key].sortField"
+  [sortOrder]="tableService.tables[key].sortOrder"
+  [rows]="tableService.tables[key].rowsNum"
+  [first]="tableService.tables[key].firstToShow"
+  [class]="styleClass"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      @for (item of columns; track item) {
+      <th scope="col" class="border-none">
+        @if (!item.headerTemplate) {
+        {{ item.label | translate }}
+        } @else {
+        <ng-container [ngTemplateOutlet]="item.headerTemplate"> </ng-container>
+        } @if (item.sortable) {
+        <p-sortIcon
+          [field]="item.sortField ?? item.propName"
+          [pSortableColumn]="item.sortField ?? item.propName"
+        >
+        </p-sortIcon>
+        } @if (item.filtrable) {
+        <p-columnFilter
+          type="text"
+          [field]="item.filterField ?? item.propName"
+          display="menu"
+          class="ml-auto"
+          [showMatchModes]="false"
+          [showOperator]="false"
+          [showAddButton]="false"
+          [showApplyButton]="false"
+          [showClearButton]="false"
+        >
+          <ng-template pTemplate="header">
+            <div class="px-3 pt-3 pb-0">
+              <span class="font-bold">
+                {{ item.filterText! | translate }}
+              </span>
+            </div>
+          </ng-template>
+
+          <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+            @if (!item.filterTemplate) {
+            <wrap-input-text
+              pInputText
+              [(ngModel)]="
+                tableService.tables[key].filters[
+                  item.filterField ?? item.propName
+                ]
+              "
+              #inputRef
+              (ngModelChange)="tableService.addFilter(key)"
+            />
+            } @else {
+            <ng-container [ngTemplateOutlet]="item.filterTemplate">
+            </ng-container>
+            }
+          </ng-template>
+        </p-columnFilter>
+        }
+      </th>
+      }
+    </tr>
+
+    @if (tableService.tables[key] && tableService.tables[key]!.searchFiltered &&
+    tableService.tables[key]!.searchFiltered.length) {
+    <tr>
+      <th
+        scope="col"
+        colspan="100%"
+        class="pt-0 pb-0 custom-table-no-border"
+        [attr.colspan]="columns.length"
+      >
+        <app-chips
+          [chips]="tableService.tables[key].searchFiltered"
+          [translateKey]="translateChipsKey"
+          (deletedChip)="deleteChip($event)"
+          (deletedAllChips)="deleteAllFilters()"
+        ></app-chips>
+      </th>
+    </tr>
+    }
+  </ng-template>
+
+  <ng-template pTemplate="body" let-row let-index="rowIndex">
+    <tr
+      (click)="onRowClick.emit(row)"
+      [class]="rowClass || (row?.styleClass ?? '')"
+    >
+      @for (item of columns; track item; let i = $index) {
+      <td [id]="item.label" [class]="item.className ?? ''">
+        @if (item.bodyTemplate) {
+        <ng-container
+          [ngTemplateOutlet]="item.bodyTemplate"
+          [ngTemplateOutletContext]="{ row: row, index: index }"
+        >
+        </ng-container>
+        } @else {
+        <app-text-table
+          [text]="row[item.propName]"
+          [maxLength]="item.maxLength ? item.maxLength : 30"
+        >
+        </app-text-table>
+        }
+      </td>
+      } @if (treeMode || (treeTrigger && row[treeTrigger])) {
+      <td class="text-center cursor-pointer" (click)="toggleRow(index)">
+        <i
+          [class]="
+            rowsExpanded()[index] ? 'pi pi-chevron-up' : 'pi pi-chevron-down'
+          "
+        ></i>
+      </td>
+      }
+    </tr>
+
+    @if ((treeMode || (treeTrigger && row[treeTrigger])) &&
+    rowsExpanded()[index] && treeRowTemplate) {
+    <tr>
+      <td
+        scope="col"
+        colspan="100%"
+        class="p-0 custom-table-no-border m-0"
+        [attr.colspan]="columns.length"
+      >
+        <ng-template
+          [ngTemplateOutlet]="treeRowTemplate"
+          [ngTemplateOutletContext]="{ row: row, index: index }"
+        >
+        </ng-template>
+      </td>
+    </tr>
+    }
+  </ng-template>
+</p-table>
+
+@let tableValue = tableService.tables[key].value?.getValue(); @if
+(tableService.tables[key].totalRecords <= 0 || !tableValue || tableValue!.length
+<= 0) {
+<div class="flex justify-content-center pt-3">
+  <p class="size18">{{ 'table.no-data' | translate }}</p>
+</div>
+} @if ( paginator && ((tableService.tables[key] &&
+tableService.tables[key].totalRecords > 0) || showAlwaysPaginator) ) {
+<app-paginator
+  [table]="tableService.tables[key]"
+  [numTotal]="showNumTotal ? tableService.tables[key].totalRecords : undefined"
+  (load)="onLoad.emit($event)"
+  [maxItems]="maxItems"
+  [showAlwaysPaginator]="showAlwaysPaginator"
+>
+</app-paginator>
+} }

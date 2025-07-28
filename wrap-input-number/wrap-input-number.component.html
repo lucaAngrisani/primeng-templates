@@ -1,39 +1,12 @@
 @if (formControlName()) {
-  <ng-container [formGroup]="formGroup()">
-    <p-inputnumber
-      [class]="className()"
-      [inputStyle]="inputStyle()"
-      [size]="size()"
-      [placeholder]="placeholder()"
-      [readonly]="readonly()"
-      [maxlength]="maxlength()"
-      [formControlName]="formControlName()"
-      [min]="min()"
-      [max]="max()"
-      [mode]="mode()"
-      [currency]="currency()"
-      [currencyDisplay]="currencyDisplay()"
-      [showButtons]="showButtons()"
-      [buttonLayout]="buttonLayout()"
-      [step]="step()"
-    >
-      <ng-template #incrementbuttonicon>
-        <span class="pi pi-chevron-up"></span>
-      </ng-template>
-      <ng-template #decrementbuttonicon>
-        <span class="pi pi-chevron-down"></span>
-      </ng-template>
-    </p-inputnumber>
-  </ng-container>
-} @else {
+<ng-container [formGroup]="formGroup()">
   <p-inputnumber
     [class]="className()"
     [inputStyle]="inputStyle()"
-    [size]="size()"
-    [disabled]="disabled()"
     [placeholder]="placeholder()"
+    [readonly]="readonly()"
     [maxlength]="maxlength()"
-    [(ngModel)]="ngModel"
+    [formControlName]="formControlName()"
     [min]="min()"
     [max]="max()"
     [mode]="mode()"
@@ -44,10 +17,35 @@
     [step]="step()"
   >
     <ng-template #incrementbuttonicon>
-      <span class="pi pi-chevron-up"></span>
+      <span class="bx bx-chevron-up"></span>
     </ng-template>
     <ng-template #decrementbuttonicon>
-      <span class="pi pi-chevron-down"></span>
+      <span class="bx bx-chevron-down"></span>
     </ng-template>
   </p-inputnumber>
+</ng-container>
+} @else {
+<p-inputnumber
+  [class]="className()"
+  [inputStyle]="inputStyle()"
+  [disabled]="disabled()"
+  [placeholder]="placeholder()"
+  [maxlength]="maxlength()"
+  [(ngModel)]="ngModel"
+  [min]="min()"
+  [max]="max()"
+  [mode]="mode()"
+  [currency]="currency()"
+  [currencyDisplay]="currencyDisplay()"
+  [showButtons]="showButtons()"
+  [buttonLayout]="buttonLayout()"
+  [step]="step()"
+>
+  <ng-template #incrementbuttonicon>
+    <span class="bx bx-chevron-up"></span>
+  </ng-template>
+  <ng-template #decrementbuttonicon>
+    <span class="bx bx-chevron-down"></span>
+  </ng-template>
+</p-inputnumber>
 }

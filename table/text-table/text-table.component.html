@@ -1,0 +1,17 @@
+<div (click)="onClick()">
+  <div
+    [class]="customClass"
+    tooltipPosition="bottom"
+    tooltipStyleClass="text-table-tooltip"
+  >
+    @if(text && text.length! > maxLength) {
+    <div tooltipPosition="bottom" tooltipStyleClass="text-table-tooltip">
+      {{ text.substring(0, maxLength) + '...' }}
+    </div>
+    } @else {
+    <div tooltipPosition="bottom" tooltipStyleClass="text-table-tooltip">
+      {{ text }}
+    </div>
+    }
+  </div>
+</div>

@@ -21,7 +21,7 @@ import { InputText } from 'primeng/inputtext';
 })
 export class WrapInputtextComponent {
   formGroup = input<FormGroup>(new FormGroup({}));
-  size = input<'small' | 'large' | null>(null);
+  size = input<'small' | 'large'>('small');
   maxlength = input<number | null>(null);
   formControlName = input<string>('');
   disabled = model<boolean>(false);

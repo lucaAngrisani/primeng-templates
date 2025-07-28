@@ -24,19 +24,19 @@ export class WrapInputNumberComponent {
   formGroup = input<FormGroup>(new FormGroup({}));
   currency = input<undefined | string>(undefined);
   size = input<'small' | 'large' | null>(null);
-  step = input<undefined | number>(undefined);
-  min = input<undefined | number>(undefined);
-  max = input<undefined | number>(undefined);
+  step = input<number>(1);
+  min = input<number>(0);
+  max = input<number>(100);
   buttonLayout = input<string>('stacked');
-  maxlength = input<number | null>(null);
+  maxlength = input<number>(10);
   formControlName = input<string>('');
   showButtons = input<boolean>(false);
   disabled = model<boolean>(false);
   readonly = input<boolean>(false);
   placeholder = input<string>('');
   mode = input<string>('decimal');
-  ngModel = model<string>('');
-  value = model<string>('');
+  ngModel = model<number>();
+  value = model<number>();
   className = input<string>('w-full');
   inputStyle = input<unknown>({});
 
@@ -49,8 +49,8 @@ export class WrapInputNumberComponent {
   }
 
   // ControlValueAccessor methods
-  writeValue(value: string): void {
-    this.value.set(value || '');
+  writeValue(value: number): void {
+    this.value.set(value);
   }
 
   registerOnTouched(fn: () => void): void {

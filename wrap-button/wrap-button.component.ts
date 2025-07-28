@@ -39,21 +39,21 @@ export class WrapButtonComponent {
     | 'help'
     | null
   >(null);
-  variant = input<'outlined' | 'text' | null>(null);
-  size = input<'small' | 'large' | null>(null);
-  loadingIcon = input<string | null>(null);
-  styleClass = input<string | null>(null);
+  variant = input<'outlined' | 'text' | undefined>(undefined);
+  size = input<'small' | 'large' | undefined>(undefined);
+  loadingIcon = input<string | undefined>(undefined);
+  styleClass = input<string | undefined>(undefined);
   className = input<string | null>(null);
-  ariaLabel = input<string | null>(null);
+  ariaLabel = input<string | undefined>(undefined);
   buttonProps = input<null | any>(null);
-  label = input<string | null>(null);
+  label = input<string | undefined>(undefined);
   style = input<object | null>(null);
-  badge = input<string | null>(null);
-  icon = input<string | null>(null);
+  badge = input<string | undefined>(undefined);
+  icon = input<string | undefined>(undefined);
   autofocus = input<boolean>(false);
   disabled = input<boolean>(false);
   outlined = input<boolean>(false);
-  iconPos = input<string>('left');
+  iconPos = input<'left' | 'right' | 'top' | 'bottom'>('left');
   loading = input<boolean>(false);
   rounded = input<boolean>(false);
   raised = input<boolean>(false);

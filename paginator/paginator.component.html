@@ -1,0 +1,46 @@
+<div [id]="'custom-paginator' + key" class="flex justify-between mt-2">
+  @if( table && table.totalRecords > 0 && (table.totalRecords > table.rowsNum ||
+  showAlwaysPaginator)){
+  <p-paginator
+    [id]="'paginator-arrow' + key"
+    [class]="
+      !table.totalRecords ||
+      table.totalRecords <= 0 ||
+      (table.totalRecords <= table.rowsNum && !showAlwaysPaginator)
+        ? 'flex no-visibility'
+        : 'flex '
+    "
+    [rows]="table.rowsNum"
+    [first]="table.firstToShow"
+    [totalRecords]="maxItems ?? table.totalRecords"
+    [pageLinkSize]="5"
+    (onPageChange)="table.firstToShow = $event.first!; load.emit()"
+    [showFirstLastIcon]="table.totalRecords >= table.rowsNum * 5"
+  ></p-paginator>
+  } @if(numTotal) {
+  <div class="elem-paginator flex items-center">
+    <!--{{ "paginator.n-filtered" | translate }}: {{ numFiltered }} /-->
+    {{ 'paginator.n-tot' | translate }}: {{ numTotal }}
+  </div>
+  }
+
+  <div class="paginator flex align-items-center justify-content-end">
+    <label [for]="'paginatorDropdown' + key" class="display-none"></label>
+    <wrap-select
+      [id]="'paginator-drop' + key"
+      [options]="table.rowsOptions"
+      [showClear]="false"
+      [(ngModel)]="table.rowsNum"
+      (onChange)="load.emit()"
+    >
+      <ng-template pTemplate="selectedItem">
+        <div class="num-per-page">
+          {{
+            'paginator.n-p-page'
+              | translate : { number: table.rowsNum, item: table.description }
+          }}
+        </div>
+      </ng-template>
+    </wrap-select>
+  </div>
+</div>

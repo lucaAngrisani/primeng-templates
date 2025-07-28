@@ -27,14 +27,10 @@ export class WrapCheckboxComponent {
   readonly = input<boolean>(false);
 
   inputId = input<string>('');
-  ngModel = model<string>('');
+  ngModel = model<string | string[]>('');
   value = input<string>('');
   label = input<string>('');
   name = input<string>('');
-
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled.set(isDisabled);
-  }
 
   // ControlValueAccessor methods
   registerOnChange(fn: (value: string) => void): void {
@@ -45,7 +41,19 @@ export class WrapCheckboxComponent {
     this.onTouched = fn;
   }
 
-  private onChange: (value: string) => void = () => {};
-  private writeValue(value: string): void {}
-  private onTouched: () => void = () => {};
+  onChange: (value: string) => void = () => {};
+  writeValue(value: string): void {
+    this.ngModel.set(value);
+  }
+  onTouched: () => void = () => {};
+
+  setDisabledState?(isDisabled: boolean): void {
+    this.disabled.set(isDisabled);
+  }
+
+  onInputChange(val: string): void {
+    this.ngModel.set(val);
+    this.onChange(val);
+    this.onTouched();
+  }
 }

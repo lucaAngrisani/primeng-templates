@@ -1,0 +1,20 @@
+<div class="app-chips-comp flex align-items-stretch flex-wrap mb-2">
+  <div class="flex p-fluid">
+    @for(chip of chips; track $index) {
+    <p-chip styleClass="mr-2">
+      <div class="padding4px size14 weight700 flex">
+        <span>{{ translateKey + '.' + chip | translate }}</span>
+        <i
+          [id]="chip + '-delete-icon'"
+          class="pi pi-times cursor-pointer align-self-center iconChip"
+          (click)="deleteChip(chip)"
+        ></i>
+      </div>
+    </p-chip>
+    } @if(chips.length > 0) {
+    <a class="resetChips" (click)="deleteAllChips()">{{
+      'agenda.table.filtersDeleteAll' | translate
+    }}</a>
+    }
+  </div>
+</div>

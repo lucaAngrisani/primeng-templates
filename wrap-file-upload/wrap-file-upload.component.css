@@ -1,0 +1,6 @@
+::ng-deep .p-fileupload-header,
+::ng-deep .p-fileupload-content,
+::ng-deep .p-fileupload-advanced {
+  padding: 0px !important;
+  border: 0px !important;
+}

@@ -1,0 +1,23 @@
+.elem-paginator {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-secondary);
+    line-height: 24px;
+}
+
+.paginator,
+:host::ng-deep .p-dropdown .p-dropdown-label {
+    color: #597483 !important;
+    font-size: 18px;
+    /*INIZIO ALG FIGMA*/
+    line-height: 28px;
+    /*FINE ALG FIGMA*/
+}
+
+:host::ng-deep .p-paginator {
+    justify-content: start;
+}
+
+.num-per-page {
+    font-weight: bold;
+}

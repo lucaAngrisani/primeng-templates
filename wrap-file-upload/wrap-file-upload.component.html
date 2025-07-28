@@ -1,8 +1,12 @@
 <p-fileUpload
   class="w-full"
+  styleClass="custom-file-upload"
   (onSelect)="onSelect.emit($event)"
   [accept]="accept()"
   [maxFileSize]="maxFileSize()"
   [auto]="auto()"
+  [chooseLabel]="chooseLabel() | translate"
+  [showCancelButton]="false"
+  [showUploadButton]="false"
 >
 </p-fileUpload>

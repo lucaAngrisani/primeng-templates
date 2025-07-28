@@ -1,16 +1,18 @@
 import { FileUploadModule, FileSelectEvent } from 'primeng/fileupload';
 import { Component, output, input } from '@angular/core';
-import { MAX_SIZE_STORAGE } from 'constants-lib';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  templateUrl: './wrap-file-upload.component.html',
-  imports: [FormsModule, FileUploadModule],
   selector: 'wrap-file-upload',
+  styleUrl: './wrap-file-upload.component.css',
+  templateUrl: './wrap-file-upload.component.html',
+  imports: [FormsModule, FileUploadModule, TranslateModule],
 })
 export class WrapFileUploadComponent {
   accept = input<string>('image/*,application/pdf');
-  maxFileSize = input<number>(MAX_SIZE_STORAGE);
+  chooseLabel = input<string>('primeng.choose');
+  maxFileSize = input<number>(1048576); //1 MB
   onSelect = output<FileSelectEvent>();
 
   auto = input<boolean>(true);

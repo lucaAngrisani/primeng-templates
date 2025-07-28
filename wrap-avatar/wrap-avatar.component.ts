@@ -7,9 +7,9 @@ import { Avatar } from 'primeng/avatar';
   imports: [Avatar],
 })
 export class WrapAvatarComponent {
-  icon = input<string | null>('pi pi-user');
-  image = input<string | null>(null);
-  label = input<string | null>(null);
-  shape = input<string>('circle');
-  size = input<string>('large');
+  icon = input<string | undefined>('pi pi-user');
+  image = input<string | undefined>(undefined);
+  label = input<string | undefined>(undefined);
+  shape = input<'square' | 'circle' | undefined>('circle');
+  size = input<'normal' | 'large' | 'xlarge' | undefined>('large');
 }

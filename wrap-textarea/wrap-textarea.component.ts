@@ -21,7 +21,7 @@ import { Textarea } from 'primeng/textarea';
 })
 export class WrapTextareaComponent {
   formGroup = input<FormGroup>(new FormGroup({}));
-  size = input<'small' | 'large' | null>(null);
+  size = input<'small' | 'large'>('small');
   formControlName = input<string>('');
   disabled = model<boolean>(false);
 
